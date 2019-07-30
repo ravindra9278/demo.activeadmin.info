@@ -2,5 +2,7 @@ language: ruby
 rvm:
   - 2.6.3
 before_script:
+  - sudo cp /etc/postgresql/{9.6,10}/main/pg_hba.conf
+  - sudo /etc/init.d/postgresql restart
   - RAILS_ENV=test bin/rails db:create db:migrate
 cache: bundler
